@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, StatusBar, Platform } from "react-native";
 import React from "react";
 import { colors } from "../global/colors";
 
@@ -14,7 +14,7 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 22,
+    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     backgroundColor: colors.persianPink,
     width: "100%",
     height: 80,

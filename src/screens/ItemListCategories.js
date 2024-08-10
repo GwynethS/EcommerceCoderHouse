@@ -5,7 +5,7 @@ import products from "../data/products.json";
 import Search from "../components/Search";
 import ProductItem from "../components/ProductItem";
 
-const ItemListCategories = ({ category }) => {
+const ItemListCategories = ({ category, handleProductDetailId }) => {
   const [productsFilteredByCategory, setProductsFilteredByCategory] = useState(
     []
   );
@@ -39,7 +39,10 @@ const ItemListCategories = ({ category }) => {
         data={productsFilteredByCategory}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <ProductItem product={item}/>
+          <ProductItem
+            product={item}
+            handleProductDetailId={handleProductDetailId}
+          />
         )}
       />
     </>
@@ -49,7 +52,7 @@ const ItemListCategories = ({ category }) => {
 export default ItemListCategories;
 
 const styles = StyleSheet.create({
-  list:{
-    marginHorizontal: 16
-  }
+  list: {
+    marginHorizontal: 16,
+  },
 });

@@ -7,19 +7,30 @@ import { useState } from "react";
 
 export default function App() {
   const [categorySelected, setCategorySelected] = useState("");
-  
+  const [productDetailId, setProductDetailId] = useState(null);
+
   const handleCategorySelected = (category) => {
     setCategorySelected(category);
-  }
+  };
+
+  const handleProductDetailId = (id) => {
+    setProductDetailId(id);
+  };
 
   return (
     <View style={styles.container}>
       {categorySelected ? (
-        <ItemListCategories category={categorySelected} />
+        productDetailId !== null ? (
+          <ItemDetail id={productDetailId} />
+        ) : (
+          <ItemListCategories
+            category={categorySelected}
+            handleProductDetailId={handleProductDetailId}
+          />
+        )
       ) : (
-        <Home handleCategorySelected={handleCategorySelected}/>
+        <Home handleCategorySelected={handleCategorySelected} />
       )}
-      {/* <ItemDetail /> */}
       <StatusBar style="auto" />
     </View>
   );
